@@ -1,0 +1,3 @@
+﻿tests/helpers/seedUser.ts(26,24): error TS2345: Argument of type '{ collection: "users"; data: { email: string; password: string; }; }' is not assignable to parameter of type 'Options<"users", UsersSelect<false> | UsersSelect<true>>'.
+  Type '{ collection: "users"; data: { email: string; password: string; }; }' is not assignable to type '{ data: DraftDataFromCollectionSlug<"users">; draft: true; } & { collection: "users"; context?: RequestContext | undefined; depth?: number | undefined; ... 13 more ...; user?: any; } & Pick<...>'.
+    Property 'draft' is missing in type '{ collection: "users"; data: { email: string; password: string; }; }' but required in type '{ data: DraftDataFromCollectionSlug<"users">; draft: true; }'.
