@@ -3,9 +3,15 @@ import type { CollectionConfig } from 'payload'
 export const Users: CollectionConfig = {
   slug: 'users',
   admin: {
-    useAsTitle: 'email',
+    useAsTitle: 'username',
   },
-  auth: true,
+  auth: {
+    loginWithUsername: {
+      allowEmailLogin: false,
+      requireEmail: false,
+      requireUsername: true,
+    },
+  },
   // 1. CONTROLLO A LIVELLO DI COLLEZIONE
   access: {
     read: () => true,
