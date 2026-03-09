@@ -8,6 +8,7 @@ import { s3Storage } from '@payloadcms/storage-s3'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { Documents } from './collections/Documents'
 import { Articles } from './collections/Articles'
 
 const filename = fileURLToPath(import.meta.url)
@@ -37,7 +38,7 @@ export default buildConfig({
       },
     },
   },
-  collections: [Users, Media, Articles],
+  collections: [Users, Media, Documents, Articles],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -53,6 +54,7 @@ export default buildConfig({
     s3Storage({
       collections: {
         media: true, // Deve corrispondere allo slug della tua collezione immagini
+        documents: true, // Collezione per i PDF
       },
       bucket: process.env.S3_BUCKET as string,
       config: {

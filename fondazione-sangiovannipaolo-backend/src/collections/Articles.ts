@@ -2,6 +2,10 @@ import type { CollectionConfig } from 'payload'
 
 export const Articles: CollectionConfig = {
     slug: 'articles',
+    labels: {
+        singular: 'Articolo',
+        plural: 'Articoli',
+    },
     admin: {
         useAsTitle: 'title',
     },
@@ -34,6 +38,12 @@ export const Articles: CollectionConfig = {
             label: 'Titolo Articolo',
             type: 'text',
             required: true,
+        },
+        {
+            name: 'immagineCopertina',
+            type: 'upload',
+            relationTo: 'media', // Importante: deve corrispondere allo slug della tua collection media
+            required: true,      // Mettilo a true se vuoi obbligare l'utente a inserire sempre una copertina
         },
         {
             name: 'content',

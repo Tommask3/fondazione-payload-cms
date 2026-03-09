@@ -2,6 +2,10 @@ import type { CollectionConfig } from 'payload'
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  labels: {
+    singular: 'Immagine',
+    plural: 'Immagini',
+  },
   access: {
     read: () => true,
   },
@@ -9,8 +13,10 @@ export const Media: CollectionConfig = {
     {
       name: 'alt',
       type: 'text',
-      required: true,
+      required: false,
     },
   ],
-  upload: true,
+  upload: {
+    mimeTypes: ['image/*'],
+  },
 }
