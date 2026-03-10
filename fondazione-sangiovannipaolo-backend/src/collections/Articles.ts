@@ -28,6 +28,13 @@ export const Articles: CollectionConfig = {
                 if (req.user?.role === 'author' && data._status === 'published') {
                     data._status = 'draft'
                 }
+                if (data.title && !data.slug) {
+                    data.slug = data.title
+                        .toLowerCase()
+                        .replace(/[^\w\s-]/g, '') // Rimuove caratteri speciali
+                        .replace(/[\s_-]+/g, '-') // Sostituisce spazi con trattini
+                        .replace(/^-+|-+$/g, ''); // Rimuove trattini all'inizio e alla fine
+                }
                 return data
             },
         ],
@@ -38,6 +45,36 @@ export const Articles: CollectionConfig = {
             label: 'Titolo Articolo',
             type: 'text',
             required: true,
+        },
+        // CAMPO SLUG (Nascosto nel form se vuoto, autogenerato dall'hook)
+        {
+            name: 'slug',
+            label: 'Slug (URL)',
+            type: 'text',
+            unique: true,
+            admin: {
+                position: 'sidebar',
+                description: 'Lascia vuoto per autogenerare dal titolo.',
+            },
+        },
+        // CAMPO CATEGORIA
+        {
+            name: 'categoria',
+            label: 'Categoria',
+            type: 'select',
+            options: ['Progetti', 'Eventi', 'Trasparenza', 'Notizie'],
+            required: true,
+            admin: {
+                position: 'sidebar',
+            }
+        },
+        // CAMPO RIASSUNTO
+        {
+            name: 'riassunto',
+            label: 'Riassunto (per le card)',
+            type: 'textarea',
+            required: true,
+            maxLength: 200, // Limita la lunghezza per evitare che le card esplodano
         },
         {
             name: 'immagineCopertina',
