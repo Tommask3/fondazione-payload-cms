@@ -1,4 +1,9 @@
 import type { CollectionConfig } from 'payload'
+import {
+    lexicalEditor,
+    HTMLConverterFeature,
+    lexicalHTML
+} from '@payloadcms/richtext-lexical'
 
 export const Articles: CollectionConfig = {
     slug: 'articles',
@@ -87,6 +92,14 @@ export const Articles: CollectionConfig = {
             label: 'Contenuto',
             type: 'richText',
             required: true,
+            // Configuriamo l'editor per supportare la conversione HTML
+            editor: lexicalEditor({
+                features: ({ defaultFeatures }) => [
+                    ...defaultFeatures,
+                    HTMLConverterFeature({}), // Abilita le regole di conversione in HTML
+                ],
+            }),
         },
+        lexicalHTML('content', { name: 'content_html' }),
     ],
 }
