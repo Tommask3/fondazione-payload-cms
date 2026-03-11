@@ -213,6 +213,7 @@ export interface Article {
     };
     [k: string]: unknown;
   };
+  content_html?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -370,6 +371,7 @@ export interface ArticlesSelect<T extends boolean = true> {
   riassunto?: T;
   immagineCopertina?: T;
   content?: T;
+  content_html?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
