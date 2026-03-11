@@ -191,6 +191,12 @@ export interface Document {
 export interface Article {
   id: number;
   title: string;
+  /**
+   * Lascia vuoto per autogenerare dal titolo.
+   */
+  slug?: string | null;
+  categoria: 'Progetti' | 'Eventi' | 'Trasparenza' | 'Notizie';
+  riassunto: string;
   immagineCopertina: number | Media;
   content: {
     root: {
@@ -359,6 +365,9 @@ export interface DocumentsSelect<T extends boolean = true> {
  */
 export interface ArticlesSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
+  categoria?: T;
+  riassunto?: T;
   immagineCopertina?: T;
   content?: T;
   updatedAt?: T;
