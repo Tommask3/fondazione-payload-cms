@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from 'next/link'
 
 export default function PayloadFrontendPage() {
   const [hovAdmin, setHovAdmin] = useState(false);
@@ -84,10 +85,10 @@ export default function PayloadFrontendPage() {
             }} />
             {/* Contenuto logo */}
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, zIndex: 1, padding: 16 }}>
-              <Image 
-                src="/logoFondazioneSB.png" 
-                alt="Logo Fondazione" 
-                width={80} 
+              <Image
+                src="/logoFondazioneSB.png"
+                alt="Logo Fondazione"
+                width={80}
                 height={80}
                 style={{ objectFit: 'contain' }}
               />
@@ -139,7 +140,7 @@ export default function PayloadFrontendPage() {
 
         {/* Bottoni */}
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
-          <a href="/admin"
+          <Link href="/admin"
             onMouseEnter={() => setHovAdmin(true)}
             onMouseLeave={() => setHovAdmin(false)}
             style={{
@@ -155,28 +156,28 @@ export default function PayloadFrontendPage() {
             }}
           >
             Pannello Admin
-          </a>
+          </Link>
         </div>
 
-        {/* Info path per dev removed */}
-      </div>
+      {/* Info path per dev removed */}
+    </div>
 
-      {/* Footer */}
-      <div style={{
-        position: "absolute", bottom: 22, left: 0, right: 0,
-        textAlign: "center", zIndex: 2,
-      }}>
-        <p style={{ fontSize: "0.6rem", color: "#5A4E38", letterSpacing: "0.06em", margin: 0 }}>
-          © 2026 Fondazione Giovanni Paolo II — Ente del Terzo Settore
-        </p>
-      </div>
+      {/* Footer */ }
+  <div style={{
+    position: "absolute", bottom: 22, left: 0, right: 0,
+    textAlign: "center", zIndex: 2,
+  }}>
+    <p style={{ fontSize: "0.6rem", color: "#5A4E38", letterSpacing: "0.06em", margin: 0 }}>
+      © 2026 Fondazione Giovanni Paolo II — Ente del Terzo Settore
+    </p>
+  </div>
 
-      {/* Striscia ambra in fondo */}
-      <div style={{
-        position: "absolute", bottom: 0, left: 0, right: 0, height: 1,
-        background: "linear-gradient(90deg, transparent, #C8A84B44, transparent)",
-      }} />
+  {/* Striscia ambra in fondo */ }
+  <div style={{
+    position: "absolute", bottom: 0, left: 0, right: 0, height: 1,
+    background: "linear-gradient(90deg, transparent, #C8A84B44, transparent)",
+  }} />
 
-    </main>
+    </main >
   );
 }
