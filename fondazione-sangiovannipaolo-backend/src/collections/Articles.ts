@@ -18,8 +18,14 @@ export const Articles: CollectionConfig = {
         drafts: true, // Attiva le bozze
     },
     access: {
-        // Chiunque può leggere i post pubblicati (Astro li leggerà così)
-        read: () => true,
+        read: ({ req: { user } }) => {
+            if (user) return true;
+            return {
+                _status: {
+                    equals: 'published',
+                },
+            };
+        },
         // Admin e Autori possono creare e modificare bozze
         create: ({ req: { user } }) => Boolean(user),
         update: ({ req: { user } }) => Boolean(user),
@@ -85,7 +91,7 @@ export const Articles: CollectionConfig = {
             name: 'immagineCopertina',
             type: 'upload',
             relationTo: 'media', // Importante: deve corrispondere allo slug della tua collection media
-            required: true,      // Mettilo a true se vuoi obbligare l'utente a inserire sempre una copertina
+            required: false,
         },
         {
             name: 'content',
@@ -99,6 +105,26 @@ export const Articles: CollectionConfig = {
                     HTMLConverterFeature({}), // Abilita le regole di conversione in HTML
                 ],
             }),
+        },
+        {
+            name: 'galleria',
+            label: 'Galleria Fotografica (Opzionale)',
+            type: 'array',
+            labels: {
+                singular: 'Foto',
+                plural: 'Foto',
+            },
+            fields: [
+                {
+                    name: 'immagine',
+                    type: 'upload',
+                    relationTo: 'media',
+                    required: true,
+                }
+            ],
+            admin: {
+                description: 'Aggiungi qui le foto per creare una galleria a fine articolo.'
+            }
         },
         lexicalHTML('content', { name: 'content_html' }),
     ],

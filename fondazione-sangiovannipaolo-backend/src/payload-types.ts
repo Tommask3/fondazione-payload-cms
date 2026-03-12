@@ -197,7 +197,7 @@ export interface Article {
   slug?: string | null;
   categoria: 'Progetti' | 'Eventi' | 'Trasparenza' | 'Notizie';
   riassunto: string;
-  immagineCopertina: number | Media;
+  immagineCopertina?: (number | null) | Media;
   content: {
     root: {
       type: string;
@@ -213,6 +213,15 @@ export interface Article {
     };
     [k: string]: unknown;
   };
+  /**
+   * Aggiungi qui le foto per creare una galleria a fine articolo.
+   */
+  galleria?:
+    | {
+        immagine: number | Media;
+        id?: string | null;
+      }[]
+    | null;
   content_html?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -371,6 +380,12 @@ export interface ArticlesSelect<T extends boolean = true> {
   riassunto?: T;
   immagineCopertina?: T;
   content?: T;
+  galleria?:
+    | T
+    | {
+        immagine?: T;
+        id?: T;
+      };
   content_html?: T;
   updatedAt?: T;
   createdAt?: T;
