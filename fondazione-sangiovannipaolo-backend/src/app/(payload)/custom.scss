@@ -1,10 +1,11 @@
 /* Custom Admin Login Styling to match the frontend */
 
 /* Overrides for the login page specifically */
-html[data-theme='dark'] body:has(.template-default.login), 
-html[data-theme='light'] body:has(.template-default.login),
-body:has(.template-default.login),
-body:has(#login-form) {
+html[data-theme='dark'] body.login, 
+html[data-theme='light'] body.login,
+body.login,
+.login,
+.template-default.login {
   /* Override global backgrounds for the login page */
   background: 
     radial-gradient(ellipse at 70% 110%, rgba(240, 226, 188, 0.13) 0%, transparent 55%),
@@ -106,7 +107,9 @@ body:has(#login-form) {
 
 .login__wrap input[type="text"]:focus,
 .login__wrap input[type="email"]:focus,
-.login__wrap input[type="password"]:focus {
+.login__wrap input[type="password"]:focus,
+.login input[type="email"]:focus,
+.login input[type="password"]:focus {
   border-color: #F5EDD8 !important; /* Bright border on focus */
   box-shadow: 0 0 0 2px rgba(245, 237, 216, 0.3) !important;
   outline: none !important;
@@ -116,7 +119,8 @@ body:has(#login-form) {
 .login__wrap button[type="submit"], 
 .login__wrap .btn.btn--style-primary,
 .login__wrap .btn,
-#login-form button[type="submit"] {
+#login-form button[type="submit"],
+.login form button[type="submit"] {
   background: #A62121 !important; /* Brighter, more punchy red */
   color: #FFFFFF !important; /* Pure white text */
   border: 2px solid #A62121 !important;
@@ -160,6 +164,58 @@ body:has(#login-form) {
   text-decoration: underline !important;
 }
 
-.custom-login-logo {
-  margin-bottom: 24px;
+/* Explicit display settings for the login page to ensure visibility regardless of DOM updates */
+.login .custom-login-logo {
+  display: block !important;
+}
+.login .custom-login-logo > div,
+.login .custom-login-logo h2,
+.login .custom-login-logo p {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.login .custom-login-logo h2 {
+  display: block !important;
+}
+
+/* Admin Dashboard Logo Scope (hide big text and decorations everywhere except login) */
+html:not(:has(.login)) body:not(:has(.login)) .custom-login-logo h2,
+html:not(:has(.login)) body:not(:has(.login)) .custom-login-logo > div:last-child {
+  display: none !important;
+}
+
+html:not(:has(.login)) body:not(:has(.login)) .custom-login-logo {
+  margin-bottom: 0 !important;
+  text-align: left !important;
+}
+
+html:not(:has(.login)) body:not(:has(.login)) .custom-login-logo > div:first-child {
+  width: 100% !important; /* Let it stretch or fit container */
+  height: 100% !important;
+  margin: 0 !important;
+}
+
+html:not(:has(.login)) body:not(:has(.login)) .custom-login-logo > div:first-child > div[style*="border-radius"] {
+  display: none !important; /* Hide gold rings */
+}
+
+html:not(:has(.login)) body:not(:has(.login)) .custom-login-logo > div:first-child > div:last-child {
+  padding: 0 !important;
+}
+
+html:not(:has(.login)) body:not(:has(.login)) .custom-login-logo img {
+  width: 40px !important; /* Increased slightly to better fit the dashboard space */
+  height: auto !important;
+  max-height: 40px !important;
+  object-fit: contain !important; /* Prevent cropping */
+}
+
+/* Base Theme Adjustments to uniform fonts across Admin Panel */
+body, .payload {
+  font-family: 'Palatino Linotype', Georgia, serif;
+}
+
+h1, h2, h3, h4, h5, h6, .brand {
+  font-family: "Georgia", 'Times New Roman', serif;
 }
