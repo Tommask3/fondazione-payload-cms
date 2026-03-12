@@ -1,0 +1,165 @@
+/* Custom Admin Login Styling to match the frontend */
+
+/* Overrides for the login page specifically */
+html[data-theme='dark'] body:has(.template-default.login), 
+html[data-theme='light'] body:has(.template-default.login),
+body:has(.template-default.login),
+body:has(#login-form) {
+  /* Override global backgrounds for the login page */
+  background: 
+    radial-gradient(ellipse at 70% 110%, rgba(240, 226, 188, 0.13) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(139, 26, 26, 0.2) 0%, transparent 50%),
+    linear-gradient(150deg, #1A1208 0%, #2A1810 35%, #3A1A0A 65%, #2E2010 100%) !important;
+  font-family: 'Palatino Linotype', Georgia, serif;
+}
+
+/* For Payload 3.x if it uses different class names */
+.template-default.login, .login__wrap {
+  position: relative;
+}
+
+/* Background gradient on the main container just in case body:has is not supported or not matching */
+.login {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Palatino Linotype', Georgia, serif;
+  background: 
+    radial-gradient(ellipse at 70% 110%, rgba(240, 226, 188, 0.13) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(139, 26, 26, 0.2) 0%, transparent 50%),
+    linear-gradient(150deg, #1A1208 0%, #2A1810 35%, #3A1A0A 65%, #2E2010 100%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.login::before, .login::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.login::before {
+  width: 600px;
+  height: 600px;
+  border: 1px solid rgba(200, 168, 75, 0.05);
+}
+
+.login::after {
+  width: 380px;
+  height: 380px;
+  border: 1px solid rgba(200, 168, 75, 0.08);
+}
+
+/* Central login card */
+.login__wrap {
+  position: relative !important;
+  z-index: 2 !important;
+  background: rgba(26, 18, 8, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(200, 168, 75, 0.2) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+  padding: 3rem !important;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+/* Text and Titles */
+.login__wrap h1 {
+  display: none; /* Hide default "Login" title as we added custom title in Logo.tsx */
+}
+
+/* Form Styles */
+.login__wrap .field-type {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.login__wrap .field-type label, 
+.login__wrap form label {
+  color: #EBD391 !important; /* Lighter gold for better contrast */
+  font-family: inherit !important;
+  font-size: 0.95rem !important; /* Slightly larger */
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  opacity: 1 !important;
+}
+
+.login__wrap input[type="text"],
+.login__wrap input[type="email"],
+.login__wrap input[type="password"] {
+  background: rgba(0,0,0,0.6) !important; /* Darker background for inputs */
+  border: 1px solid rgba(200, 168, 75, 0.5) !important; /* More visible border */
+  color: #FFFFFF !important; /* Pure white text for inputs */
+  font-family: inherit !important;
+  font-size: 1.05rem !important; /* Larger readable input text */
+  border-radius: 4px !important;
+  padding: 12px !important;
+}
+
+.login__wrap input[type="text"]:focus,
+.login__wrap input[type="email"]:focus,
+.login__wrap input[type="password"]:focus {
+  border-color: #F5EDD8 !important; /* Bright border on focus */
+  box-shadow: 0 0 0 2px rgba(245, 237, 216, 0.3) !important;
+  outline: none !important;
+}
+
+/* Button */
+.login__wrap button[type="submit"], 
+.login__wrap .btn.btn--style-primary,
+.login__wrap .btn,
+#login-form button[type="submit"] {
+  background: #A62121 !important; /* Brighter, more punchy red */
+  color: #FFFFFF !important; /* Pure white text */
+  border: 2px solid #A62121 !important;
+  border-radius: 4px !important;
+  padding: 14px 28px !important; /* Slightly larger padding */
+  font-size: 0.9rem !important; /* Larger text */
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  transition: all 0.2s !important;
+  width: 100% !important;
+  margin-top: 1.5rem !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important; /* Give it depth */
+}
+
+.login__wrap button[type="submit"]:hover, 
+.login__wrap .btn.btn--style-primary:hover,
+.login__wrap .btn:hover,
+#login-form button[type="submit"]:hover {
+  background: #C42626 !important; /* Much brighter red on hover */
+  border-color: #C42626 !important;
+  box-shadow: 0 6px 16px rgba(196, 38, 38, 0.5) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Links (like Forgot Password) */
+.login__wrap a,
+.login__wrap .login__forgot-password {
+  color: #C8A84B !important;
+  opacity: 0.8 !important;
+  transition: opacity 0.2s !important;
+  font-size: 0.85rem !important;
+  text-decoration: none !important;
+}
+
+.login__wrap a:hover,
+.login__wrap .login__forgot-password:hover {
+  opacity: 1 !important;
+  text-decoration: underline !important;
+}
+
+.custom-login-logo {
+  margin-bottom: 24px;
+}
