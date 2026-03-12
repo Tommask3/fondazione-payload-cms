@@ -108,22 +108,12 @@ export const Articles: CollectionConfig = {
         },
         {
             name: 'galleria',
-            label: 'Galleria Fotografica (Opzionale)',
-            type: 'array',
-            labels: {
-                singular: 'Foto',
-                plural: 'Foto',
-            },
-            fields: [
-                {
-                    name: 'immagine',
-                    type: 'upload',
-                    relationTo: 'media',
-                    required: true,
-                }
-            ],
+            label: 'Galleria Fotografica',
+            type: 'upload',
+            relationTo: 'media',
+            hasMany: true,
             admin: {
-                description: 'Aggiungi qui le foto per creare una galleria a fine articolo.'
+                description: 'Seleziona più foto contemporaneamente dalla tua libreria media.',
             }
         },
         lexicalHTML('content', { name: 'content_html' }),

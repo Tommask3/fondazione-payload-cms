@@ -214,14 +214,9 @@ export interface Article {
     [k: string]: unknown;
   };
   /**
-   * Aggiungi qui le foto per creare una galleria a fine articolo.
+   * Seleziona più foto contemporaneamente dalla tua libreria media.
    */
-  galleria?:
-    | {
-        immagine: number | Media;
-        id?: string | null;
-      }[]
-    | null;
+  galleria?: (number | Media)[] | null;
   content_html?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -380,12 +375,7 @@ export interface ArticlesSelect<T extends boolean = true> {
   riassunto?: T;
   immagineCopertina?: T;
   content?: T;
-  galleria?:
-    | T
-    | {
-        immagine?: T;
-        id?: T;
-      };
+  galleria?: T;
   content_html?: T;
   updatedAt?: T;
   createdAt?: T;
