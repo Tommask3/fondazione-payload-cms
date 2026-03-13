@@ -15,6 +15,16 @@ export const Documents: CollectionConfig = {
             type: 'text',
             required: false,
         },
+        {
+            name: 'categoria',
+            label: 'Categoria',
+            type: 'select',
+            options: ['Bilanci', 'Statuto', 'Trasparenza'],
+            required: true,
+            admin: {
+                position: 'sidebar',
+            }
+        },
     ],
     upload: {
         mimeTypes: ['application/pdf'],

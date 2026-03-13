@@ -172,6 +172,7 @@ export interface Media {
 export interface Document {
   id: number;
   alt?: string | null;
+  categoria: 'Bilanci' | 'Statuto' | 'Trasparenza';
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -352,6 +353,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface DocumentsSelect<T extends boolean = true> {
   alt?: T;
+  categoria?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
