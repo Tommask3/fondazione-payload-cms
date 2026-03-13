@@ -13,6 +13,7 @@ export const Articles: CollectionConfig = {
     },
     admin: {
         useAsTitle: 'title',
+        defaultColumns: ['title', 'categoria', '_status', 'updatedAt'],
     },
     versions: {
         drafts: true, // Attiva le bozze

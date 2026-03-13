@@ -1,6 +1,33 @@
+'use client'
+
 import React from 'react'
+import { usePathname } from 'next/navigation'
 
 export const Logo = () => {
+    const pathname = usePathname()
+
+    // Pagine auth dove mostrare il logo completo con titolo e decorazioni
+    const isAuthPage =
+        pathname === '/admin/login' ||
+        pathname === '/admin/forgot' ||
+        pathname?.startsWith('/admin/reset')
+
+    // Nella dashboard: solo l'immagine piccola senza decorazioni
+    if (!isAuthPage) {
+        return (
+            <div className="custom-login-logo" style={{ textAlign: 'left' }}>
+                <img
+                    src="/logoFondazioneSB.png"
+                    alt="Logo Fondazione Giovanni Paolo II"
+                    width={40}
+                    height={40}
+                    style={{ objectFit: 'contain' }}
+                />
+            </div>
+        )
+    }
+
+    // Nelle pagine auth: logo completo con cerchi, titolo e "Area Amministrativa"
     return (
         <div className="custom-login-logo" style={{ marginBottom: 32, textAlign: 'center' }}>
             <div style={{

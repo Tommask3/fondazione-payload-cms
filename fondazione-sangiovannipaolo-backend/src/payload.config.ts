@@ -5,6 +5,7 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import { s3Storage } from '@payloadcms/storage-s3'
+import { it } from '@payloadcms/translations/languages/it'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -17,6 +18,7 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   admin: {
     user: Users.slug,
+    theme: 'dark', // Forza tema dark su tutto l'admin (login, forgot password, ecc.)
     importMap: {
       baseDir: path.resolve(dirname),
     },
@@ -36,10 +38,19 @@ export default buildConfig({
         Logo: '@/components/Logo#Logo',
         Icon: '@/components/Logo#Logo', // Puoi usare un'icona più piccola qui se vuoi, per ora usiamo lo stesso
       },
+      views: {
+        dashboard: {
+          Component: '@/components/Dashboard#Dashboard',
+        },
+      },
     },
   },
   collections: [Users, Media, Documents, Articles],
   editor: lexicalEditor(),
+  i18n: {
+    supportedLanguages: { it },
+    fallbackLanguage: 'it',
+  },
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
