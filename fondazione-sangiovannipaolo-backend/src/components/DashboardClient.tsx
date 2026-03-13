@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import Link from 'next/link'
 
 /* ── PALETTE ──────────────────────────────────────────────────────────────── */
 const C = {
@@ -230,8 +231,8 @@ function ActivityPanel({ articles }: { articles: RecentArticle[] }) {
             Attività Recente
           </h3>
         </div>
-        <a
-          href="/admin/collections/articles"
+
+        <Link href="/admin/collections/articles/"
           style={{
             fontSize: '0.95rem',
             color: C.textSecondary,
@@ -241,7 +242,7 @@ function ActivityPanel({ articles }: { articles: RecentArticle[] }) {
           }}
         >
           Vedi tutti
-        </a>
+        </Link>
       </div>
 
       {/* Lista */}
